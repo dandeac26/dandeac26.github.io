@@ -2613,7 +2613,7 @@ body > article {
   /* Articles */
 
   #top {
-    padding: 3em 0;
+    padding: 10em 0;
   }
 
   #top .image {
@@ -2624,10 +2624,6 @@ body > article {
 
   #top p {
     font-size: 1em;
-  }
-
-  .icon.fa-arrow-up {
-    color: white;
   }
 
   #contact footer {
