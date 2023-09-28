@@ -2626,6 +2626,10 @@ body > article {
     font-size: 1em;
   }
 
+  .icon.fa-arrow-up {
+    color: white;
+  }
+
   #contact footer {
     margin: 0;
   }
