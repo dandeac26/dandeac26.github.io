@@ -2216,73 +2216,6 @@ ul.actions li:first-child {
   background: #252525;
 }
 
-/* Old Nav */
-/* 
-#nav {
-  background-color: #0e0d0d;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 10000;
-  cursor: default;
-  height: 3.5em;
-  line-height: 3.5em;
-}
-
-#nav ul {
-  margin-bottom: 0;
-  list-style: none;
-  padding-left: 0;
-}
-
-#nav li {
-  display: inline-block;
-  padding-left: 0;
-}
-
-#nav a {
-  -moz-transition: background-color 0.2s ease-in-out;
-  -webkit-transition: background-color 0.2s ease-in-out;
-  -ms-transition: background-color 0.2s ease-in-out;
-  transition: background-color 0.2s ease-in-out;
-  position: relative;
-  display: block;
-  color: #fff;
-  text-decoration: none;
-  outline: 0;
-  font-weight: 600;
-  border-radius: 8px;
-  color: #fff;
-  height: 2.5em;
-  line-height: 2.5em;
-  padding: 0 1.25em;
-}
-
-#nav a:hover {
-  color: #fff !important;
-  background: #383838;
-}
-
-#nav a.active {
-  background: #484848;
-}
-
-#nav a.active:before {
-  content: "";
-  display: block;
-  position: absolute;
-  bottom: -0.6em;
-  left: 50%;
-  margin-left: -0.75em;
-  border-left: solid 0.75em transparent;
-  border-right: solid 0.75em transparent;
-  border-top: solid 0.6em #282828;
-} */
-
-/* New Nav */
-
 /* Nav */
 #nav {
   background-color: #0e0d0d;
@@ -2310,25 +2243,6 @@ ul.actions li:first-child {
   text-align: left;
   padding: 10px; /* Add padding to create space around content */
   height: 100%; /* Occupy full height of the parent */
-}
-
-/* #nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-#nav ul li {
-  margin-right: 10px; /* Add margin between list items */
-} */
-
-#nav ul.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  text-align: left;
-  height: 60px; /* Adjust the height as needed */
-  padding: 10px; /* Add padding to create space around content */
 }
 
 #nav li {
