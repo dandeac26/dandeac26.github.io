@@ -64,6 +64,14 @@ export const projects: Project[] = [
       "Climatization system developed during an automotive internship using AUTOSAR-compliant embedded C.",
   },
   {
+    title: "Weather Station",
+    image: "/images/weather_station_project.png",
+    githubUrl: "https://github.com/dandeac26/WeatherStation#readme",
+    categories: ["C++", "IoT", "ESP8266", "Hardware"],
+    description:
+      "ESP8266-based weather station with DHT22 sensor for temperature and humidity monitoring.",
+  },
+  {
     title: "Energy Management System",
     image: "/images/EMSarchitecture.png",
     githubUrl:
@@ -81,27 +89,19 @@ export const projects: Project[] = [
       "Multi-threaded queue management simulation with a graphical user interface.",
   },
   {
+    title: "PawBook",
+    image: "/images/pic02.jpg",
+    githubUrl: "https://github.com/dandeac26/PawBook#readme",
+    categories: ["Kotlin", "Android", "Mobile"],
+    description: "Android social networking application for pet owners.",
+  },
+  {
     title: "Hill Cipher",
     image: "/images/pic02.jpg",
     githubUrl: "https://github.com/dandeac26/hill_cypher#readme",
     categories: ["C++", "Cryptography", "Cybersecurity"],
     description:
       "Hill cipher implementation with 2x2 matrix key encoding/decoding and brute-force attack.",
-  },
-  {
-    title: "Weather Station",
-    image: "/images/pic02.jpg",
-    githubUrl: "https://github.com/dandeac26/WeatherStation#readme",
-    categories: ["C++", "IoT", "ESP8266", "Hardware"],
-    description:
-      "ESP8266-based weather station with DHT22 sensor for temperature and humidity monitoring.",
-  },
-  {
-    title: "PawBook",
-    image: "/images/pic02.jpg",
-    githubUrl: "https://github.com/dandeac26/PawBook#readme",
-    categories: ["Kotlin", "Android", "Mobile"],
-    description: "Android social networking application for pet owners.",
   },
   {
     title: "Bakery Order System",
