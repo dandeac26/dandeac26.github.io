@@ -8,6 +8,14 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: "Diploma App",
+    image: "/images/diploma_app_screens.png",
+    githubUrl: "https://github.com/dandeac26/diploma_app#readme",
+    categories: ["Android", "Kotlin", "Bachelor Thesis", "Mobile"],
+    description:
+      "Android application for my diploma project interacting with my backend services.",
+  },
+  {
     title: "Safe Storage",
     image: "/images/SafeStorage.png",
     githubUrl: "https://github.com/dandeac26/SafeStorage#readme",
@@ -102,13 +110,5 @@ export const projects: Project[] = [
     categories: ["Java", "GUI", "Order Management"],
     description:
       "Order management Java application with graphical user interface.",
-  },
-  {
-    title: "Diploma App",
-    image: "/images/icons8-diploma-64.png",
-    githubUrl: "https://github.com/dandeac26/diploma_app#readme",
-    categories: ["Web", "Full Stack", "University Project"],
-    description:
-      "Diploma project application focused on end-to-end web functionality.",
   },
 ];
