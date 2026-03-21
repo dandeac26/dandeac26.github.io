@@ -95,14 +95,16 @@ const Sidebar: React.FC = () => {
   const sidebarContent = (
     <>
       {/* Logo / Avatar */}
-      <div className="flex flex-col items-center pt-8 pb-6">
-        <div className="w-14 h-14 rounded-2xl bg-accent-soft flex items-center justify-center mb-3">
+      <div className="flex items-center gap-3 px-4 pt-8 pb-6">
+        <div className="w-14 h-14 shrink-0 rounded-2xl bg-accent-soft flex items-center justify-center">
           <CodeXml size={28} className="text-accent" />
         </div>
-        <h1 className="text-sidebar-text text-lg font-semibold">
-          Dan Cristian Deac
-        </h1>
-        <p className="text-sidebar-muted text-sm">Software Engineer</p>
+        <div className="flex flex-col items-start text-left leading-tight">
+          <h1 className="text-sidebar-text text-lg font-semibold">
+            Dan Cristian Deac
+          </h1>
+          <p className="text-sidebar-muted text-sm">Software Engineer</p>
+        </div>
       </div>
 
       {/* Navigation */}
