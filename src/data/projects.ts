@@ -10,7 +10,7 @@ export const projects: Project[] = [
   {
     title: "Safe Storage",
     image: "/images/SafeStorage.png",
-    githubUrl: "https://github.com/dandeac26/SafeStorage",
+    githubUrl: "https://github.com/dandeac26/SafeStorage#readme",
     categories: [
       "C Threads",
       "WinAPI",
@@ -27,7 +27,7 @@ export const projects: Project[] = [
   {
     title: "Mini Operating System",
     image: "/images/printmbr.png",
-    githubUrl: "https://github.com/dandeac26/miniOS",
+    githubUrl: "https://github.com/dandeac26/miniOS#readme",
     categories: [
       "OS Dev",
       "C",
@@ -43,7 +43,7 @@ export const projects: Project[] = [
     title: "Automotive Internship at AROBS",
     image: "/images/automotive.png",
     githubUrl:
-      "https://github.com/dandeac26/ClimatizationSystem-AutomotiveInternship",
+      "https://github.com/dandeac26/ClimatizationSystem-AutomotiveInternship#readme",
     categories: [
       "Automotive",
       "Embedded C",
@@ -59,7 +59,7 @@ export const projects: Project[] = [
     title: "Energy Management System",
     image: "/images/EMSarchitecture.png",
     githubUrl:
-      "https://github.com/dandeac26/EnergyManagementSystem-Microservices",
+      "https://github.com/dandeac26/EnergyManagementSystem-Microservices#readme",
     categories: ["Java", "Python", "React", "Web", "Microservices", "Docker"],
     description:
       "Microservice-based system to manage and track energy consumption across devices.",
@@ -67,7 +67,7 @@ export const projects: Project[] = [
   {
     title: "Queue Management Application",
     image: "/images/QMApp.png",
-    githubUrl: "https://github.com/dandeac26/Queue-management-system",
+    githubUrl: "https://github.com/dandeac26/Queue-management-system#readme",
     categories: ["Java Threads", "Thread-Synchronization", "Queues", "GUI"],
     description:
       "Multi-threaded queue management simulation with a graphical user interface.",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
   {
     title: "Hill Cipher",
     image: "/images/pic02.jpg",
-    githubUrl: "https://github.com/dandeac26/hill_cypher",
+    githubUrl: "https://github.com/dandeac26/hill_cypher#readme",
     categories: ["C++", "Cryptography", "Cybersecurity"],
     description:
       "Hill cipher implementation with 2x2 matrix key encoding/decoding and brute-force attack.",
@@ -83,7 +83,7 @@ export const projects: Project[] = [
   {
     title: "Weather Station",
     image: "/images/pic02.jpg",
-    githubUrl: "https://github.com/dandeac26/WeatherStation",
+    githubUrl: "https://github.com/dandeac26/WeatherStation#readme",
     categories: ["C++", "IoT", "ESP8266", "Hardware"],
     description:
       "ESP8266-based weather station with DHT22 sensor for temperature and humidity monitoring.",
@@ -91,16 +91,24 @@ export const projects: Project[] = [
   {
     title: "PawBook",
     image: "/images/pic02.jpg",
-    githubUrl: "https://github.com/dandeac26/PawBook",
+    githubUrl: "https://github.com/dandeac26/PawBook#readme",
     categories: ["Kotlin", "Android", "Mobile"],
     description: "Android social networking application for pet owners.",
   },
   {
     title: "Bakery Order System",
     image: "/images/pic02.jpg",
-    githubUrl: "https://github.com/dandeac26/Bak3ry",
+    githubUrl: "https://github.com/dandeac26/Bak3ry#readme",
     categories: ["Java", "GUI", "Order Management"],
     description:
       "Order management Java application with graphical user interface.",
+  },
+  {
+    title: "Diploma App",
+    image: "/images/icons8-diploma-64.png",
+    githubUrl: "https://github.com/dandeac26/diploma_app#readme",
+    categories: ["Web", "Full Stack", "University Project"],
+    description:
+      "Diploma project application focused on end-to-end web functionality.",
   },
 ];
