@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  /* Accent — Graphite defaults, overridden per profile via JS */
+  --color-accent: #18181b;
+  --color-accent-hover: #3f3f46;
+  --color-accent-soft: #e4e4e7;
+
+  /* Sidebar — fixed Graphite, not overridden by profiles */
+  --color-sidebar: #f4f4f5;
+  --color-sidebar-text: #18181b;
+  --color-sidebar-muted: #71717a;
+  --color-sidebar-hover: #e4e4e7;
+
+  /* Surfaces */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f6f8fa;
+  --color-surface-dim: #eef1f5;
+  /* surface-dark: light-mode alt band (light neutral), dark-mode deepest black */
+  --color-surface-dark: #edeff2;
+  --color-card: #ffffff;
+  --color-hover: #f0f2f5;
+  --color-code-bg: #f3f4f6;
+
+  /* Text — high contrast on light */
+  --color-heading: #0d1117;
+  --color-body: #1f2937;
+  --color-muted: #4b5563;
+
+  /* Border */
+  --color-border: #d0d7de;
+
+  /* Font */
+  --font-family-sans: "Inter", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* Dark mode — Graphite defaults, overridden per profile via JS */
+.dark {
+  /* Improved dark badge contrast: light text on clearly-distinct bg */
+  --color-accent: #d4d4d8;
+  --color-accent-hover: #e4e4e7;
+  --color-accent-soft: #3f3f46;
+
+  /* Sidebar — fixed Graphite */
+  --color-sidebar: #18181b;
+  --color-sidebar-text: #fafafa;
+  --color-sidebar-muted: #a1a1aa;
+  --color-sidebar-hover: #27272a;
+
+  --color-surface: #0d1117;
+  --color-surface-alt: #161b22;
+  --color-surface-dim: #0a0f16;
+  --color-surface-dark: #09090b;
+  --color-card: #21262d;
+  --color-hover: #2d333b;
+  --color-code-bg: #2d333b;
+
+  --color-heading: #e6edf3;
+  --color-body: #8b949e;
+  --color-muted: #6e7681;
+
+  --color-border: #30363d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
