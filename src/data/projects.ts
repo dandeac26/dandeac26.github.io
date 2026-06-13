@@ -9,7 +9,7 @@ export interface Project {
 export const projects: Project[] = [
   {
     title: "Diploma App",
-    image: "/images/diploma_app_screens.png",
+    image: "/images/products_page.png",
     githubUrl: "https://github.com/dandeac26/diploma_app#readme",
     categories: ["Android", "Kotlin", "Bachelor Thesis", "Mobile"],
     description:
@@ -65,7 +65,7 @@ export const projects: Project[] = [
   },
   {
     title: "Weather Station",
-    image: "/images/weather_station_project.png",
+    image: "/images/weatherStation.png",
     githubUrl: "https://github.com/dandeac26/WeatherStation#readme",
     categories: ["C++", "IoT", "ESP8266", "Hardware"],
     description:

@@ -10,6 +10,7 @@ interface BlogMeta {
   tags: string[];
   slug: string;
   content: string;
+  banner?: string;
 }
 
 // Import all blog markdown files at build time
@@ -62,6 +63,7 @@ function loadBlogPosts(): BlogMeta[] {
         tags: (data.tags as string[]) ?? [],
         slug,
         content,
+        banner: (data.banner as string) || undefined,
       };
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -87,7 +89,7 @@ const Blog: React.FC = () => {
           Blog
         </motion.h2>
 
-        <div className="max-w-3xl mx-auto space-y-4">
+        <div className="space-y-4">
           {posts.map((post, index) => {
             const isExpanded = expandedSlug === post.slug;
             return (
@@ -99,6 +101,38 @@ const Blog: React.FC = () => {
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 className="bg-card rounded-xl overflow-hidden shadow-sm"
               >
+                {/* Optional banner */}
+                {post.banner && (
+                  <button
+                    onClick={() =>
+                      setExpandedSlug(isExpanded ? null : post.slug)
+                    }
+                    className="group block w-full cursor-pointer overflow-hidden"
+                    aria-label={`Toggle ${post.title}`}
+                  >
+                    <motion.div
+                      animate={{ height: isExpanded ? "auto" : "13rem" }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                      className="relative overflow-hidden"
+                    >
+                      <img
+                        src={post.banner}
+                        alt={`${post.title} banner`}
+                        loading="lazy"
+                        className={`w-full transition-transform duration-[600ms] ease-out ${
+                          isExpanded
+                            ? "h-auto object-contain"
+                            : "h-full object-cover group-hover:scale-[1.04]"
+                        }`}
+                      />
+                      {/* subtle gradient + lift on hover, only while collapsed */}
+                      {!isExpanded && (
+                        <span className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                      )}
+                    </motion.div>
+                  </button>
+                )}
+
                 {/* Post Header (clickable) */}
                 <button
                   onClick={() => setExpandedSlug(isExpanded ? null : post.slug)}

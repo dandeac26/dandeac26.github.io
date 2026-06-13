@@ -2,6 +2,13 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Bind the `dark:` variant to the .dark class (toggled in ThemeContext)
+   instead of the OS `prefers-color-scheme`. Without this, Tailwind v4
+   `dark:` utilities (e.g. `dark:prose-invert`) follow the OS theme, so the
+   blog text could render inverted (light text on the light card) when the
+   site is in light mode but the OS is in dark mode. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   /* Accent — Graphite defaults, overridden per profile via JS */
   --color-accent: #18181b;
@@ -22,7 +29,14 @@
   --color-surface-dark: #edeff2;
   --color-card: #ffffff;
   --color-hover: #f0f2f5;
-  --color-code-bg: #f3f4f6;
+
+  /* Code — each bg/text pair is guaranteed high-contrast (see color rules
+     comment below). Inline code sits on light cards; code blocks get their
+     own surface + a border so they read clearly in light mode. */
+  --color-code-inline-bg: #eaeef2;
+  --color-code-inline-text: #0d1117;
+  --color-code-block-bg: #f6f8fa;
+  --color-code-block-text: #1f2937;
 
   /* Text — high contrast on light */
   --color-heading: #0d1117;
@@ -55,7 +69,11 @@
   --color-surface-dark: #09090b;
   --color-card: #21262d;
   --color-hover: #2d333b;
-  --color-code-bg: #2d333b;
+
+  --color-code-inline-bg: #2d333b;
+  --color-code-inline-text: #e6edf3;
+  --color-code-block-bg: #161b22;
+  --color-code-block-text: #e6edf3;
 
   --color-heading: #e6edf3;
   --color-body: #8b949e;
@@ -90,4 +108,63 @@ body {
 
 .dark ::-webkit-scrollbar-thumb {
   background: #475569;
+}
+
+/* ───────────────────────────────────────────────────────────────────────
+   COLOR RULES — read before using a token
+   ───────────────────────────────────────────────────────────────────────
+   TEXT (always safe, high contrast on their intended surfaces):
+     --color-heading  headings / strong text on cards & surfaces
+     --color-body     body copy on cards & surfaces
+     --color-muted    secondary text only (captions, meta) — still ≥4.5:1
+
+   ACCENT (the brand color, varies per profile):
+     --color-accent       USE AS: text/icons on a light/neutral surface,
+                           and as the active-nav text color. It is the
+                           strong, dark (light-mode) / bright (dark-mode)
+                           shade — high contrast by design.
+     --color-accent-soft  USE ONLY AS: a faint tinted BACKGROUND placed
+                           BEHIND --color-accent text/icons.
+                           ❌ NEVER use --color-accent-soft as a text color.
+                           ❌ NEVER put plain body text on --color-accent-soft.
+                           Because it is faint, pair it with a visible
+                           --color-accent ring so selections still read
+                           against light sidebars (see Sidebar active state).
+
+   CODE (use the matching bg/text PAIR — never mix across pairs):
+     inline code  -> --color-code-inline-bg  +  --color-code-inline-text
+     code blocks  -> --color-code-block-bg   +  --color-code-block-text
+     ❌ Do NOT style code with --color-accent* or the prose `pre` defaults;
+        that is what produced light-on-light code. The rules below own it.
+   ─────────────────────────────────────────────────────────────────────── */
+
+/* Inline code: explicit bg + text pair, no typography backticks. */
+.prose :not(pre) > code {
+  background-color: var(--color-code-inline-bg);
+  color: var(--color-code-inline-text);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.375rem;
+  font-size: 0.875em;
+  font-weight: 500;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: "";
+}
+
+/* Code blocks: own surface + border, text inherits the block text color. */
+.prose pre {
+  background-color: var(--color-code-block-bg);
+  color: var(--color-code-block-text);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+}
+.prose pre code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+  font-weight: 400;
+  font-size: 0.875em;
 }

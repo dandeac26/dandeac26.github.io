@@ -49,23 +49,48 @@ const Sidebar: React.FC = () => {
   const profileMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const sections = navItems
-      .map((item) => document.getElementById(item.id))
-      .filter(Boolean) as HTMLElement[];
+    // Deterministic active-section tracking based on scroll position.
+    // The active item is the last section whose top has crossed an
+    // "activation line" near the top of the viewport, with a hard
+    // override so the final section highlights once the page is scrolled
+    // to the bottom (it can never reach the activation line otherwise).
+    const getSections = () =>
+      navItems
+        .map((item) => document.getElementById(item.id))
+        .filter((el): el is HTMLElement => el !== null);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-20% 0px -60% 0px" },
-    );
+    const updateActive = () => {
+      const sections = getSections();
+      if (sections.length === 0) return;
 
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+      const scrollBottom = window.scrollY + window.innerHeight;
+      const docHeight = document.documentElement.scrollHeight;
+
+      // At (or within 2px of) the bottom of the page, the last section wins.
+      if (scrollBottom >= docHeight - 2) {
+        setActiveSection(sections[sections.length - 1].id);
+        return;
+      }
+
+      const activationLine = window.innerHeight * 0.3;
+      let current = sections[0].id;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= activationLine) {
+          current = section.id;
+        } else {
+          break;
+        }
+      }
+      setActiveSection(current);
+    };
+
+    updateActive();
+    window.addEventListener("scroll", updateActive, { passive: true });
+    window.addEventListener("resize", updateActive);
+    return () => {
+      window.removeEventListener("scroll", updateActive);
+      window.removeEventListener("resize", updateActive);
+    };
   }, []);
 
   useEffect(() => {
@@ -83,6 +108,9 @@ const Sidebar: React.FC = () => {
 
   const handleNavClick = (id: string) => {
     setMobileOpen(false);
+    // Highlight the clicked item immediately so the nav always reflects
+    // the user's intent, even while the smooth scroll is still animating.
+    setActiveSection(id);
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
@@ -119,7 +147,7 @@ const Sidebar: React.FC = () => {
                   onClick={() => handleNavClick(item.id)}
                   className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all duration-200 cursor-pointer ${
                     isActive
-                      ? "bg-accent-soft text-accent font-medium"
+                      ? "bg-accent-soft text-accent font-medium ring-1 ring-inset ring-accent/40"
                       : "text-sidebar-muted hover:text-sidebar-text hover:bg-sidebar-hover"
                   }`}
                 >
