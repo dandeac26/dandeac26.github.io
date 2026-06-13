@@ -6,7 +6,7 @@ interface BlogPostProps {
 
 const BlogPost: React.FC<BlogPostProps> = ({ content }) => {
   return (
-    <div className="prose prose-sm md:prose-base dark:prose-invert max-w-none prose-headings:text-heading prose-p:text-body prose-a:text-accent prose-strong:text-heading">
+    <div className="prose prose-sm md:prose-base dark:prose-invert max-w-none prose-headings:text-heading prose-p:text-body prose-p:text-justify prose-li:text-justify prose-a:text-accent prose-strong:text-heading">
       <ReactMarkdown
         components={{
           img: ({ src, alt }) => {

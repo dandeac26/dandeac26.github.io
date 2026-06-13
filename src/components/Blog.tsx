@@ -220,68 +220,79 @@ const Blog: React.FC = () => {
                   </button>
                 )}
 
-                {/* Post Header */}
-                <div className="flex items-start">
-                  <button
-                    onClick={() => toggle(post.slug)}
-                    className="flex-1 min-w-0 text-left p-5 flex items-start justify-between gap-3 sm:gap-4 hover:bg-hover transition-colors cursor-pointer"
-                  >
-                    <div className="flex-1 min-w-0">
-                      <h3 className="font-semibold text-heading mb-1">
-                        {post.title}
-                      </h3>
-                      <p className="text-body text-sm mb-2">
-                        {post.description}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
-                        <span className="flex items-center gap-1">
-                          <Calendar size={12} />
-                          {new Date(post.date).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })}
-                        </span>
-                        {post.tags.length > 0 && (
-                          <span className="flex items-center gap-1">
-                            <Tag size={12} />
-                            {post.tags.join(", ")}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    <div className="text-muted mt-1 shrink-0">
-                      {isExpanded ? (
-                        <ChevronUp size={20} />
-                      ) : (
-                        <ChevronDown size={20} />
-                      )}
-                    </div>
-                  </button>
+                {/* Post Header — only the title row shares space with the
+                    share button + chevron; description/meta run full width. */}
+                <div
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => toggle(post.slug)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      toggle(post.slug);
+                    }
+                  }}
+                  className="p-5 hover:bg-hover transition-colors cursor-pointer"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="flex-1 min-w-0 font-semibold text-heading">
+                      {post.title}
+                    </h3>
 
-                  {/* Share — a polished pill that copies a direct link */}
-                  <div className="shrink-0 p-3 sm:p-4">
-                    <button
-                      onClick={(e) => handleShare(post.slug, e)}
-                      title={
-                        copiedSlug === post.slug ? "Link copied!" : "Copy link"
-                      }
-                      aria-label={`Copy link to ${post.title}`}
-                      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-2 text-xs font-medium transition-all duration-200 cursor-pointer active:scale-95 ${
-                        copiedSlug === post.slug
-                          ? "border-green-500/40 bg-green-500/10 text-green-500"
-                          : "border-border bg-surface-alt text-muted hover:text-accent hover:border-accent hover:shadow-sm"
-                      }`}
-                    >
-                      {copiedSlug === post.slug ? (
-                        <Check size={15} />
-                      ) : (
-                        <Share2 size={15} />
-                      )}
-                      <span className="hidden sm:inline">
-                        {copiedSlug === post.slug ? "Copied" : "Share"}
+                    <div className="flex items-center gap-2 shrink-0">
+                      {/* Share — a polished pill that copies a direct link */}
+                      <button
+                        onClick={(e) => handleShare(post.slug, e)}
+                        title={
+                          copiedSlug === post.slug
+                            ? "Link copied!"
+                            : "Copy link"
+                        }
+                        aria-label={`Copy link to ${post.title}`}
+                        className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-all duration-200 cursor-pointer active:scale-95 ${
+                          copiedSlug === post.slug
+                            ? "border-green-500/40 bg-green-500/10 text-green-500"
+                            : "border-border bg-surface-alt text-muted hover:text-accent hover:border-accent hover:shadow-sm"
+                        }`}
+                      >
+                        {copiedSlug === post.slug ? (
+                          <Check size={15} />
+                        ) : (
+                          <Share2 size={15} />
+                        )}
+                        <span className="hidden sm:inline">
+                          {copiedSlug === post.slug ? "Copied" : "Share"}
+                        </span>
+                      </button>
+
+                      <span className="text-muted">
+                        {isExpanded ? (
+                          <ChevronUp size={20} />
+                        ) : (
+                          <ChevronDown size={20} />
+                        )}
                       </span>
-                    </button>
+                    </div>
+                  </div>
+
+                  <p className="text-body text-sm mt-1.5 mb-2">
+                    {post.description}
+                  </p>
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-muted">
+                    <span className="flex items-center gap-1">
+                      <Calendar size={12} />
+                      {new Date(post.date).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+                    {post.tags.length > 0 && (
+                      <span className="flex items-center gap-1">
+                        <Tag size={12} />
+                        {post.tags.join(", ")}
+                      </span>
+                    )}
                   </div>
                 </div>
 
